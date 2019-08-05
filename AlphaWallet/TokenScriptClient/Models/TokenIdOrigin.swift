@@ -31,9 +31,13 @@ struct TokenIdOrigin {
             return String(numberEncodingUtf8String: number).flatMap { .string($0) }
         case .e18:
             return EtherNumberFormatter().number(from: String(number)).flatMap { .uint(BigUInt($0)) }
+        case .e8:
+            return EtherNumberFormatter().number(from: String(number)).flatMap { .uint(BigUInt($0)) }
         case .bool:
             return .bool(number != 0)
         case .void:
+            return nil
+        default:
             return nil
         }
     }

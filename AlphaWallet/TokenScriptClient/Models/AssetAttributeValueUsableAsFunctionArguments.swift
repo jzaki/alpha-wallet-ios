@@ -47,6 +47,8 @@ enum AssetAttributeValueUsableAsFunctionArguments {
             return coerceToUInt(forFunctionType: functionType)
         case .void:
             return nil
+        default:
+            return nil
         }
     }
 

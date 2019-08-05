@@ -28,9 +28,14 @@ struct UserEntryOrigin {
             return String(data: Data(bytes: userEntry.hexa2Bytes), encoding: .utf8).flatMap { .string($0) }
         case .e18:
             return EtherNumberFormatter().number(from: userEntry).flatMap { .uint(BigUInt($0)) }
+        case .e8:
+            return EtherNumberFormatter().number(from: userEntry, decimals: 8).flatMap { .uint(BigUInt($0)) }
         case .bool:
             return .bool(userEntry == "true")
         case .void:
+            return nil
+        //TODO support bytes, bytesN
+        default:
             return nil
         }
     }

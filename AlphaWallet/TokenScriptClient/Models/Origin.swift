@@ -10,7 +10,11 @@ enum OriginAsType: String {
     case uint
     case utf8
     case e18
+    case e8
+    case bytes
+    case bytes32
     case bool
+    case string
     case void
 
     var solidityReturnType: SolidityType {
@@ -23,6 +27,14 @@ enum OriginAsType: String {
             return .string
         case .e18:
             return .uint256
+        case .e8:
+            return .uint112
+        case .bytes32:
+             return .bytes32
+        case .bytes:
+            return .bytes
+        case .string:
+            return .string
         case .bool:
             return .bool
         case .void:

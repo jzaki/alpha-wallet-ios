@@ -83,6 +83,9 @@ class CallForAssetAttributeCoordinator {
                     case .void:
                         //Don't expect to reach here
                         seal.fulfill(.bool(false))
+                    default:
+                        //Don't expect to reach here
+                        seal.fulfill(.bool(false))
                     }
                 } else {
                     if case SolidityType.void = functionCall.output.type {
