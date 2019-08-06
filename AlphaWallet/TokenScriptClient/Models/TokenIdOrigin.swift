@@ -35,9 +35,9 @@ struct TokenIdOrigin {
             return EtherNumberFormatter().number(from: String(number)).flatMap { .uint(BigUInt($0)) }
         case .bool:
             return .bool(number != 0)
+        case .bytes, .string, .bytes32:
+            return String(numberEncodingUtf8String: number).flatMap { AlphaWallet.Address(string: $0) }.flatMap { .address($0) }
         case .void:
-            return nil
-        default:
             return nil
         }
     }
